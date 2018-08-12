@@ -20,11 +20,21 @@ class User {
   }
 }
 
+class Admin extends User {
+  deleteUser(user) {
+    users = users.filter(u => {
+      //ACCESS FOR INDIVIDUAL ITEMS
+      return u.email != user.email;
+    });
+  }
+}
+
 var userOne = new User("lahiru@frontdaddy.com", "Lahiru");
 var userTwo = new User("madu@frontdaddy.com", "Madu");
+var admin = new Admin("shaan@frontdaddy.com", "shaan");
 
-userOne
-  .login()
-  .updateScore()
-  .updateScore()
-  .logout();
+var users = [userOne, userTwo, admin];
+
+admin.deleteUser(userTwo);
+
+console.log(users);
